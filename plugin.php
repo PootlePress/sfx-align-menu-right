@@ -238,50 +238,23 @@ final class SFX_Align_Menu_Right {
 	}
 
 	public function option_css() {
-
-
 		if ( $this->enableAlignMenuRight ) {
-			$css = '';
-
-			$css .= "@media screen and (min-width: 768px) {\n";
-
-			$css .= ".menu-main-container, #menu-main { display: inline-block; }\n";
-
-			$css .= "#site-navigation {\n";
-			$css .= "\t" . "float: none; width: auto; display: inline-block; margin-right: 0; padding-top: 0.5em; \n";
-			$css .= "}\n";
-
-			$css .= ".main-navigation ul.menu > li > a, .main-navigation ul.nav-menu > li > a {\n";
-			$css .= "\t" . "padding-bottom: 0;\n";
-			$css .= "}\n";
-
-
-			$css .= ".site-header-cart .cart-contents {\n";
-			$css .= "\t" . "padding-bottom: 0;\n";
-			$css .= "}\n";
-
-			// for Storefront WooCommerce Extension
-			$css .= ".woocommerce-active .site-header .site-header-cart {\n";
-			$css .= "\t" . "float: none; display: inline-block;\n";
-			$css .= "}\n";
-
-			// if cart link has no text, only a cart icon, as in demo
-			// the link is 0 height, causing the cart link to be lower than nav, fix it
-			$css .= ".woocommerce-active .site-header .site-header-cart .cart-contents {\n";
-			$css .= "\t" . "height: 1em;\n";
-			$css .= "}\n";
-
-			// if Jetpack site logo is used, add space under the logo,
-			// the same space under the nav when not aligned right
-			$css .= "#masthead > .col-full > .site-logo-link { padding-bottom: 2.224em; }\n";
-
-			$css .= "}\n";
-
-			echo "<style>\n";
-			echo $css;
-			echo "</style>\n";
+			echo <<<HTML
+				<style>
+					@media (min-width: 768px) {
+						#masthead .col-full {
+							display: flex;
+							align-items: center;
+						}
+					
+						.woocommerce-active .site-header div.site-branding {
+							width: auto;
+						}
+					}
+				</style>
+HTML;
 		}
-	} // End instance()
+	}
 
 	/**
 	 * Load the localisation file.
