@@ -247,6 +247,10 @@ final class SFX_Align_Menu_Right {
 							align-items: center;
 						}
 					
+						#masthead .main-navigation {
+							text-align: right;
+						}
+					
 						.woocommerce-active .site-header div.site-branding {
 							width: auto;
 						}
